@@ -6,15 +6,13 @@ import Map from './components/map';
 import './App.scss';
 
 import flats from './data/flats';
+const MAPS_KEY = process.env.REACT_APP_MAPS_KEY;
 
 
 class App extends Component {
   constructor(props) {
     super(props);
-
     const cards = flats.map((item, i) => ({...item, key: i}));
-    // console.log(cards);
-
     this.state = {
       cards: cards,
       selection: null
@@ -28,7 +26,7 @@ class App extends Component {
           <FlatList cards={this.state.cards} />
         </div>
         <div className="map-container">
-          <Map />
+          <Map apikey={MAPS_KEY}/>
         </div>
       </div>
     );
